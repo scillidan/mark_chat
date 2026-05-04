@@ -1,0 +1,9 @@
+Q: What is tauri?
+
+A(译): Tauri是一个开源框架，旨在使用网页技术构建跨平台的桌面应用程序。它使开发者能够使用JavaScript、TypeScript或Rust等语言，同时利用诸如HTML、CSS以及React、Vue或Svelte等任何JavaScript框架来创建应用程序。Tauri的一个关键特点是能够生成高度优化的轻量级二进制文件，与Electron等其他框架相比，资源占用极少。
+
+Tauri应用程序采用基于Rust的后端以提升性能和安全性，而前端通常基于网页技术，实现与现有网页开发工作流的无缝集成。这使得Tauri成为希望创建桌面应用且不牺牲性能或资源使用的开发者的理想选择。
+
+Tauri框架注重提升用户隐私和安全，尽量减少数据收集，并为开发者提供对应用权限的细粒度控制。此外，Tauri支持自动更新、文件系统访问以及在Windows、macOS和Linux等多个平台上的其他本地功能。
+
+[GPT-4o mini]
