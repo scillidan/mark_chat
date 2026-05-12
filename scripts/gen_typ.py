@@ -5,7 +5,7 @@ import argparse
 from pathlib import Path
 
 
-def generate_typ(filename, fonts):
+def generate_typ(filename, fonts, size_str):
     typs_dir = Path("typs")
     typs_dir.mkdir(exist_ok=True)
 
@@ -19,7 +19,7 @@ def generate_typ(filename, fonts):
     content = f"""#import "@preview/cmarker:0.1.8"
 
 #set page(paper: "a6", margin: 5%)
-#set text(font: ({font_str}), size: 8pt)
+#set text(font: ({font_str}), size: {size_str})
 #set par(justify: true)
 
 #cmarker.render(read("../{md_path.name}"))"""
@@ -33,13 +33,9 @@ def generate_typ(filename, fonts):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Generate Typst file from Markdown")
     parser.add_argument("filename", help="Markdown filename (without .md extension)")
-    parser.add_argument(
-        "--font",
-        action="append",
-        dest="fonts",
-        help="Font name (can be specified multiple times)",
-    )
+    parser.add_argument("--font", action="append", dest="fonts", help="Font name (can be specified multiple times)")
+    parser.add_argument("--size", default="8pt", help="Font size (default: 8pt)")
     args = parser.parse_args()
 
     fonts = args.fonts if args.fonts else ["MonaspiceNe NFM", "Sarasa Mono SC"]
-    generate_typ(args.filename, fonts)
+    generate_typ(args.filename, fonts, args.size)
