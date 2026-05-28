@@ -15,6 +15,9 @@ def generate_typ(filename, fonts, size_str):
         print(f"Error: Markdown file not found for {filename}")
         sys.exit(1)
 
+    if not any(c.isalpha() for c in size_str):
+        size_str = size_str + "pt"
+
     font_str = ", ".join(f'"{f}"' for f in fonts)
     content = f"""#import "@preview/cmarker:0.1.8"
 
