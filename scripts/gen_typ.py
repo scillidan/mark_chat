@@ -5,7 +5,7 @@ import argparse
 from pathlib import Path
 
 
-def generate_typ(filename, fonts, size_str):
+def generate_typ(filename, size_str, fonts):
     typs_dir = Path("typs")
     typs_dir.mkdir(exist_ok=True)
 
@@ -36,9 +36,9 @@ def generate_typ(filename, fonts, size_str):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Generate Typst file from Markdown")
     parser.add_argument("filename", help="Markdown filename (without .md extension)")
-    parser.add_argument("--font", action="append", dest="fonts", help="Font name (can be specified multiple times)")
     parser.add_argument("--size", default="8pt", help="Font size (default: 8pt)")
+    parser.add_argument("--font", action="append", dest="fonts", help="Font name (can be specified multiple times)")
     args = parser.parse_args()
 
     fonts = args.fonts if args.fonts else ["MonaspiceNe NFM", "Sarasa Mono SC"]
-    generate_typ(args.filename, fonts, args.size)
+    generate_typ(args.filename, args.size, fonts)
